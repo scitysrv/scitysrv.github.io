@@ -1,13 +1,44 @@
+<script>
+	const hash = window.location.hash.substring(1);
+	const urlParams = new URLSearchParams(hash.split('?')[1] || '');
+	const successParam = urlParams.get('success');
+	
+    const alertContainer = document.createElement('div');
+    alertContainer.className = 'container mt-3';
+    
+    if (successParam === 'true') {
+        alertContainer.innerHTML = `
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>✅ Оплата прошла успешно!</strong> Перезайдите на сервер.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        `;
+    } else if (successParam === 'false' || successParam === '') {
+        alertContainer.innerHTML = `
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>❌ Что-то пошло не так!</strong> Попробуйте позже или свяжитесь с разработчиком.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        `;
+    }
+    
+    const shopHeading = document.querySelector('h2');
+    if (shopHeading && (successParam === 'true' || successParam === 'false' || successParam === '')) {
+        shopHeading.parentNode.insertBefore(alertContainer, shopHeading);
+    }
+</script>
+
 <style>
-.shop-card { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 15px; backdrop-filter: blur(10px); transition: transform 0.3s ease, box-shadow 0.3s ease; color: white; }
-.shop-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(255, 148, 0, 0.2); }
-.shop-card .card-img-top { border-radius: 15px 15px 0 0; height: 200px; object-fit: cover; }
-.shop-card .card-title { font-weight: 600; }
-.shop-card .card-text { color: #ccc; margin-bottom: 1rem; }
-.shop-card .list-unstyled li { color: #ddd; margin-bottom: 0.3rem; font-size: 0.9em; }
-.shop-card .btn-warning { color: white; background: linear-gradient(45deg, #FF9400, #FFB74D); border: none; border-radius: 8px; font-weight: 600; transition: all 0.3s ease; }
-.shop-card .btn-warning:hover { background: linear-gradient(45deg, #FFB74D, #FF9400); transform: scale(1.05); }
-.badge { font-size: 0.7em; padding: 0.5em 0.7em; }
+	.shop-card { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 15px; backdrop-filter: blur(10px); transition: transform 0.3s ease, box-shadow 0.3s ease; color: white; }
+	.shop-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(255, 148, 0, 0.2); }
+	.shop-card .card-img-top { border-radius: 15px 15px 0 0; height: 200px; object-fit: cover; }
+	.shop-card .card-title { font-weight: 600; }
+	.shop-card .card-text { color: #ccc; margin-bottom: 1rem; }
+	.shop-card .list-unstyled li { color: #ddd; margin-bottom: 0.3rem; font-size: 0.9em; }
+	.shop-card .btn-warning { color: white; background: linear-gradient(45deg, #FF9400, #FFB74D); border: none; border-radius: 8px; font-weight: 600; transition: all 0.3s ease; }
+	.shop-card .btn-warning:hover { background: linear-gradient(45deg, #FFB74D, #FF9400); transform: scale(1.05); }
+	.badge { font-size: 0.7em; padding: 0.5em 0.7em; }
+	.btn-close { filter: invert(1); }
 </style>
 
 <h2>🛒 Магазин</h2>
@@ -42,8 +73,6 @@
 	
         <div class="col">
             <div class="card h-100 shop-card">
-                <!--<div class="badge bg-danger position-absolute top-0 end-0 m-2">НОВИНКА</div>-->
-                <!--<div class="badge bg-success position-absolute top-0 end-0 m-2">ПОПУЛЯРНО</div>-->
                 <img src="img/vip.jpg" class="card-img-top" alt="VIP статус">
                 <div class="card-body">
                     <h5 class="card-title">VIP Статус</h5>
