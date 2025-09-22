@@ -67,3 +67,8 @@ cmd { border: 1px solid white; background: rgba(0, 0, 0, 0.6); color: white; fon
 .spoiler-checkbox:checked ~ .spoiler-content { padding: 15px 20px; max-height: 2000px; }
 .spoiler-checkbox:checked ~ .spoiler-label { border-radius: 5px 5px 0 0; }
 .page-title { text-align: center; padding: 5px 0; margin-bottom: 10px; }
+.table-transparent { --bs-table-bg: transparent; --bs-table-striped-bg: rgba(255, 255, 255, 0.05); --bs-table-striped-color: #fff; --bs-table-active-bg: rgba(255, 255, 255, 0.1); --bs-table-active-color: #fff; --bs-table-hover-bg: rgba(255, 255, 255, 0.075); --bs-table-hover-color: #fff; color: #fff; border: 2px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.1); }
+.table-transparent td { color: white; }
+.table-transparent th { color: white; }
+.table-transparent th, .table-transparent td { border-color: rgba(255, 255, 255, 0.1); background-color: transparent !important; }
+.table-transparent .table-light { --bs-table-bg: rgba(255, 255, 255, 0.1); color: #fff; }
