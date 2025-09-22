@@ -133,10 +133,11 @@
         </section>
 
         <footer class="section footer">
-            <div>© 2025 ShieldCity<br>⚠️ Задротство доводит до нервных срывов и вредит вашему здоровью!</div>
+            <div>© 2025 ShieldCity<br>scitysrv@yandex.ru - связь с владельцем</div>
             <div class="footer-links">
                 <a href="#changelog">Обновления</a>
                 <a href="#offer">Оферта</a>
+                <a href="#privacy">Политика приватности</a>
             </div>
         </footer>
     </div>
@@ -189,6 +190,7 @@
             const content = document.querySelector('.content');
 
 			async function loadContent(page) {
+				page = page.split('?')[0];
 				try {
 					const response = await fetch(`${page}.html`);
 					
@@ -231,5 +233,4 @@
 		});
     </script>
 </body>
-
 </html>
