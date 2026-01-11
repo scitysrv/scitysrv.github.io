@@ -10,7 +10,25 @@
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
-	<!-- Модальное окно для уведомления -->
+
+	<div class="modal fade" id="shopModal" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">🛒 Покупка</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="text-center">
+						Для покупки подписки открой ТГ бота
+						<a href="https://t.me/scitysrv_bot" target="_blank">@scitysrv_bot</a>,
+						напиши команду <cmd>/shop</cmd> и следуй инструкциям бота!
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 	<div class="modal fade" id="playModal" tabindex="-1" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
