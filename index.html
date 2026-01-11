@@ -65,7 +65,6 @@
                     </div>
                 </div>
             </nav>
-            <!-- <button class="play-btn"><i class="fas fa-play"></i>Играть</button> -->
 			<button class="play-btn" data-bs-toggle="modal" data-bs-target="#playModal"><i class="fas fa-play"></i>Играть</button>
         </header>
 
@@ -177,26 +176,12 @@
         
             auto();
         
-            /* const playBtn = document.querySelector('.play-btn');
-            playBtn.addEventListener('click', () => {
-                if (document.querySelector('.notify')) return;
-                const notify = document.createElement('div');
-                notify.className = 'notify';
-                notify.innerHTML = '<span>Подключение к серверу...</span><button>&times;</button>';
-                document.body.appendChild(notify);
-                notify.querySelector('button').addEventListener('click', () => notify.remove());
-            }); */
-        
             const content = document.querySelector('.content');
-
 			async function loadContent(page) {
 				page = page.split('?')[0];
 				try {
 					const response = await fetch(`${page}.html`);
-					
-					if (!response.ok) {
-						throw new Error(`Страница ${page}.html не найдена (статус: ${response.status})`);
-					}
+					if (!response.ok) throw new Error(`Страница ${page}.html не найдена (статус: ${response.status})`);
 					
 					const htmlContent = await response.text();
 					content.innerHTML = htmlContent;
@@ -225,14 +210,9 @@
 			document.querySelector('.dropdown-menu').addEventListener('click', handleNavClick);
 			document.querySelector('.footer-links').addEventListener('click', handleNavClick);
 		
-			if (!location.hash) {
-				loadContent('main');
-			} else {
-				loadContent(location.hash.substring(1));
-			}
+			if (!location.hash) loadContent('main');
+			else loadContent(location.hash.substring(1));
 		});
     </script>
 </body>
 </html>
-
-
